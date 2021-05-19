@@ -4,13 +4,17 @@ import PageBreadcrumb from '../../components/breadcrumb/Breadcrumb.comp'
 import data from '../../assets/data/dummy-tickets.json'
 import MessageHistory from '../../components/message-history/MessageHistory.comp'
 import UpdateTicket from '../../components/update-ticket/UpdateTicket.comp'
+import { useParams } from 'react-router-dom'
+import TicketLists from '../ticket-listing/TicketLists.page'
 
 
-const ticket = data[0]
+//const ticket = data[0]
 
 const Ticket = () => {  
-
+    const { tId } = useParams()
     const [message, setMessage] = useState('')
+    const [ticket, setTicket] = useState('')
+
     const handleOnSubmit = (e) => {
       e.preventDefault()
       alert("Form submitted")
@@ -19,8 +23,13 @@ const Ticket = () => {
       setMessage(e.target.value)
     }
     useEffect(() => {
-        
-    }, [message])
+        for (let i=0; i < data.length; i++) {
+           if (data[i].id == tId) {
+             setTicket(data[i])
+             continue
+           }
+        }
+    }, [message, tId])
 
     return (
         <Container>
