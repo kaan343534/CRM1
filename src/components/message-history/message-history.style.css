@@ -1,0 +1,12 @@
+.message-history{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.message{
+    padding:1rem;
+    width: 80%;
+    border: 1px solid beige;
+    border-radius: 0.25rem;
+}
